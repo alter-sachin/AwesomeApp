@@ -2,13 +2,13 @@
   "name": "hotel",
   "children": [
     {
-      "name": "Rating1",
+      "name": "★",
       "children": [
         {
-          "name": "Price1",
+          "name": "£ 0-100",
           "children": [
             {
-              "name": "Location1",
+              "name": "Southwark",
               "size": 2,
               "HotelIds": [
                 1,
@@ -17,7 +17,7 @@
               ]
             },
             {
-              "name": "Location2",
+              "name": "Kensington",
               "size": 1,
               "HotelIds": [
                 4,
@@ -26,7 +26,7 @@
               ]
             },
             {
-              "name": "Location3",
+              "name": "Westminster",
               "size": 1,
               "HotelIds": [
                 7,
@@ -35,7 +35,7 @@
               ]
             },
             {
-              "name": "Location4",
+              "name": "Paddington",
               "size": 1,
               "HotelIds": [
                 10,
@@ -46,10 +46,10 @@
           ]
         },
         {
-          "name": "Price2",
+          "name": "£ 100-200",
           "children": [
             {
-              "name": "Location1",
+              "name": "Southwark",
               "size": 1,
               "HotelIds": [
                 13,
@@ -58,7 +58,7 @@
               ]
             },
             {
-              "name": "Location2",
+              "name": "Kensington",
               "size": 3,
               "HotelIds": [
                 16,
@@ -67,7 +67,7 @@
               ]
             },
             {
-              "name": "Location3",
+              "name": "Westminster",
               "size": 1,
               "HotelIds": [
                 19,
@@ -76,7 +76,7 @@
               ]
             },
             {
-              "name": "Location4",
+              "name": "Paddington",
               "size": 4,
               "HotelIds": [
                 22,
@@ -86,10 +86,10 @@
           ]
         },
         {
-          "name": "Price3",
+          "name": "£ 200-400",
           "children": [
             {
-              "name": "Location1",
+              "name": "Southwark",
               "size": 1,
               "HotelIds": [
                 24,
@@ -98,7 +98,7 @@
               ]
             },
             {
-              "name": "Location2",
+              "name": "Kensington",
               "size": 0,
               "HotelIds": [
                 27,
@@ -107,7 +107,7 @@
               ]
             },
             {
-              "name": "Location3",
+              "name": "Westminster",
               "size": 2,
               "HotelIds": [
                 30,
@@ -116,7 +116,7 @@
               ]
             },
             {
-              "name": "Location4",
+              "name": "Paddington",
               "size": 1,
               "HotelIds": [
                 33,
@@ -127,10 +127,10 @@
           ]
         },
         {
-          "name": "Price4",
+          "name": "£ 500+",
           "children": [
             {
-              "name": "Location1",
+              "name": "Southwark",
               "size": 0,
               "HotelIds": [
                 36,
@@ -139,7 +139,7 @@
               ]
             },
             {
-              "name": "Location2",
+              "name": "Kensington",
               "size": 3,
               "HotelIds": [
                 39,
@@ -148,7 +148,7 @@
               ]
             },
             {
-              "name": "Location3",
+              "name": "Westminster",
               "size": 1,
               "HotelIds": [
                 42,
@@ -157,7 +157,7 @@
               ]
             },
             {
-              "name": "Location4",
+              "name": "Paddington",
               "size": 2 ,
               "HotelIds": [
                 45,
@@ -170,13 +170,13 @@
       ]
     },
     {
-      "name": "Rating2",
+      "name": "★★",
       "children": [
         {
-          "name": "Price1",
+          "name": "£ 0-100",
           "children": [
             {
-              "name": "Location1",
+              "name": "Southwark",
               "size": 5,
               "HotelIds": [
                 48,
@@ -185,7 +185,7 @@
               ]
             },
             {
-              "name": "Location2",
+              "name": "Kensington",
               "size": 5,
               "HotelIds": [
                 51,
@@ -194,7 +194,7 @@
               ]
             },
             {
-              "name": "Location3",
+              "name": "Westminster",
               "size": 5,
               "HotelIds": [
                 54,
@@ -203,7 +203,7 @@
               ]
             },
             {
-              "name": "Location4",
+              "name": "Paddington",
               "size": 5,
               "HotelIds": [
                 57,
@@ -214,10 +214,10 @@
           ]
         },
         {
-          "name": "Price2",
+          "name": "£ 100-200",
           "children": [
             {
-              "name": "Location1",
+              "name": "Southwark",
               "size": 5,
               "HotelIds": [
                 60,
@@ -226,7 +226,7 @@
               ]
             },
             {
-              "name": "Location2",
+              "name": "Kensington",
               "size": 5,
               "HotelIds": [
                 63,
@@ -235,7 +235,7 @@
               ]
             },
             {
-              "name": "Location3",
+              "name": "Westminster",
               "size": 5,
               "HotelIds": [
                 66,
@@ -244,7 +244,7 @@
               ]
             },
             {
-              "name": "Location4",
+              "name": "Paddington",
               "size": 5,
               "HotelIds": [
                 69,
@@ -255,10 +255,10 @@
           ]
         },
         {
-          "name": "Price3",
+          "name": "£ 200-400",
           "children": [
             {
-              "name": "Location1",
+              "name": "Southwark",
               "size": 5,
               "HotelIds": [
                 72,
@@ -267,7 +267,7 @@
               ]
             },
             {
-              "name": "Location2",
+              "name": "Kensington",
               "size": 5,
               "HotelIds": [
                 75,
@@ -276,7 +276,7 @@
               ]
             },
             {
-              "name": "Location3",
+              "name": "Westminster",
               "size": 5,
               "HotelIds": [
                 78,
@@ -285,7 +285,7 @@
               ]
             },
             {
-              "name": "Location4",
+              "name": "Paddington",
               "size": 5,
               "HotelIds": [
                 81,
@@ -296,10 +296,10 @@
           ]
         },
         {
-          "name": "Price4",
+          "name": "£ 500+",
           "children": [
             {
-              "name": "Location1",
+              "name": "Southwark",
               "size": 5,
               "HotelIds": [
                 84,
@@ -308,7 +308,7 @@
               ]
             },
             {
-              "name": "Location2",
+              "name": "Kensington",
               "size": 5,
               "HotelIds": [
                 87,
@@ -317,7 +317,7 @@
               ]
             },
             {
-              "name": "Location3",
+              "name": "Westminster",
               "size": 5,
               "HotelIds": [
                 90,
@@ -326,7 +326,7 @@
               ]
             },
             {
-              "name": "Location4",
+              "name": "Paddington",
               "size": 5,
               "HotelIds": [
                 93,
@@ -339,13 +339,13 @@
       ]
     },
     {
-      "name": "Rating3",
+      "name": "★★★",
       "children": [
         {
-          "name": "Price1",
+          "name": "£ 0-100",
           "children": [
             {
-              "name": "Location1",
+              "name": "Southwark",
               "size": 5,
               "HotelIds": [
                 96,
@@ -354,7 +354,7 @@
               ]
             },
             {
-              "name": "Location2",
+              "name": "Kensington",
               "size": 5,
               "HotelIds": [
                 99,
@@ -363,7 +363,7 @@
               ]
             },
             {
-              "name": "Location3",
+              "name": "Westminster",
               "size": 5,
               "HotelIds": [
                 102,
@@ -372,7 +372,7 @@
               ]
             },
             {
-              "name": "Location4",
+              "name": "Paddington",
               "size": 5,
               "HotelIds": [
                 105,
@@ -383,10 +383,10 @@
           ]
         },
         {
-          "name": "Price2",
+          "name": "£ 100-200",
           "children": [
             {
-              "name": "Location1",
+              "name": "Southwark",
               "size": 5,
               "HotelIds": [
                 108,
@@ -395,7 +395,7 @@
               ]
             },
             {
-              "name": "Location2",
+              "name": "Kensington",
               "size": 5,
               "HotelIds": [
                 111,
@@ -404,7 +404,7 @@
               ]
             },
             {
-              "name": "Location3",
+              "name": "Westminster",
               "size": 5,
               "HotelIds": [
                 114,
@@ -413,7 +413,7 @@
               ]
             },
             {
-              "name": "Location4",
+              "name": "Paddington",
               "size": 5,
               "HotelIds": [
                 117,
@@ -424,10 +424,10 @@
           ]
         },
         {
-          "name": "Price3",
+          "name": "£ 200-400",
           "children": [
             {
-              "name": "Location1",
+              "name": "Southwark",
               "size": 5,
               "HotelIds": [
                 120,
@@ -436,7 +436,7 @@
               ]
             },
             {
-              "name": "Location2",
+              "name": "Kensington",
               "size": 5,
               "HotelIds": [
                 124,
@@ -445,7 +445,7 @@
               ]
             },
             {
-              "name": "Location3",
+              "name": "Westminster",
               "size": 5,
               "HotelIds": [
                 127,
@@ -454,7 +454,7 @@
               ]
             },
             {
-              "name": "Location4",
+              "name": "Paddington",
               "size": 5,
               "HotelIds": [
                 130,
@@ -465,10 +465,10 @@
           ]
         },
         {
-          "name": "Price4",
+          "name": "£ 500+",
           "children": [
             {
-              "name": "Location1",
+              "name": "Southwark",
               "size": 5,
               "HotelIds": [
                 134,
@@ -477,7 +477,7 @@
               ]
             },
             {
-              "name": "Location2",
+              "name": "Kensington",
               "size": 5,
               "HotelIds": [
                 137,
@@ -486,7 +486,7 @@
               ]
             },
             {
-              "name": "Location3",
+              "name": "Westminster",
               "size": 5,
               "HotelIds": [
                 140,
@@ -495,7 +495,7 @@
               ]
             },
             {
-              "name": "Location4",
+              "name": "Paddington",
               "size": 5,
               "HotelIds": [
                 143,
@@ -508,13 +508,13 @@
       ]
     },
     {
-      "name": "Rating4",
+      "name": "★★★★",
       "children": [
         {
-          "name": "Price1",
+          "name": "£ 0-100",
           "children": [
             {
-              "name": "Location1",
+              "name": "Southwark",
               "size": 5,
               "HotelIds": [
                 146,
@@ -523,7 +523,7 @@
               ]
             },
             {
-              "name": "Location2",
+              "name": "Kensington",
               "size": 5,
               "HotelIds": [
                 149,
@@ -532,7 +532,7 @@
               ]
             },
             {
-              "name": "Location3",
+              "name": "Westminster",
               "size": 5,
               "HotelIds": [
                 152,
@@ -541,7 +541,7 @@
               ]
             },
             {
-              "name": "Location4",
+              "name": "Paddington",
               "size": 5,
               "HotelIds": [
                 155,
@@ -552,10 +552,10 @@
           ]
         },
         {
-          "name": "Price2",
+          "name": "£ 100-200",
           "children": [
             {
-              "name": "Location1",
+              "name": "Southwark",
               "size": 5,
               "HotelIds": [
                 158,
@@ -564,7 +564,7 @@
               ]
             },
             {
-              "name": "Location2",
+              "name": "Kensington",
               "size": 5,
               "HotelIds": [
                 159,
@@ -573,7 +573,7 @@
               ]
             },
             {
-              "name": "Location3",
+              "name": "Westminster",
               "size": 5,
               "HotelIds": [
                 162,
@@ -582,7 +582,7 @@
               ]
             },
             {
-              "name": "Location4",
+              "name": "Paddington",
               "size": 5,
               "HotelIds": [
                 165,
@@ -593,10 +593,10 @@
           ]
         },
         {
-          "name": "Price3",
+          "name": "£ 200-400",
           "children": [
             {
-              "name": "Location1",
+              "name": "Southwark",
               "size": 5,
               "HotelIds": [
                 168,
@@ -605,7 +605,7 @@
               ]
             },
             {
-              "name": "Location2",
+              "name": "Kensington",
               "size": 5,
               "HotelIds": [
                 171,
@@ -614,7 +614,7 @@
               ]
             },
             {
-              "name": "Location3",
+              "name": "Westminster",
               "size": 5,
               "HotelIds": [
                 174,
@@ -623,7 +623,7 @@
               ]
             },
             {
-              "name": "Location4",
+              "name": "Paddington",
               "size": 5,
               "HotelIds": [
                 177,
@@ -634,10 +634,10 @@
           ]
         },
         {
-          "name": "Price4",
+          "name": "£ 500+",
           "children": [
             {
-              "name": "Location1",
+              "name": "Southwark",
               "size": 5,
               "HotelIds": [
                 180,
@@ -646,7 +646,7 @@
               ]
             },
             {
-              "name": "Location2",
+              "name": "Kensington",
               "size": 5,
               "HotelIds": [
                 183,
@@ -655,7 +655,7 @@
               ]
             },
             {
-              "name": "Location3",
+              "name": "Westminster",
               "size": 5,
               "HotelIds": [
                 186,
@@ -664,7 +664,7 @@
               ]
             },
             {
-              "name": "Location4",
+              "name": "Paddington",
               "size": 5,
               "HotelIds": [
                 189,
