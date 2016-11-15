@@ -1,0 +1,11 @@
+{
+ "name": "hotel",
+ "children": [
+  {"name": "Rating1", "size": 5},
+      {"name": "Rating2", "size": 5},
+      {"name": "Rating3", "size": 5},
+      {"name": "Rating4", "size": 5}
+     ]
+    
+    }
+
