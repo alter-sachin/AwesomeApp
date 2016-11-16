@@ -21,7 +21,10 @@
             height: 20px;
         }
         header span {background:white;}
-        a {color: #1155CC;}
+        a {
+          height: 50px;
+          width: 50px;
+          color: #1155CC;}
     </style>
 </head>
 
@@ -44,7 +47,7 @@ circle {
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script>
 
-var margin = {top: 350, right: 480, bottom: 350, left: 660},
+var margin = {top: 300, right: 480, bottom: 300, left: 660},
     radius = Math.min(margin.top, margin.right, margin.bottom, margin.left) - 10;
 
 var hue = d3.scale.category10();
@@ -119,11 +122,15 @@ d3.json("hotel.json", function(error, root) {
 
   function zoomIn(p) {
     if (p.depth > 1) p = p.parent;
-    if (!p.children) return;
+    if (!p.children) {
+      d3.selectAll("#thumbnail-main").style("visibility","");
+      return;
+    }
     zoom(p, p);
   }
 
   function zoomOut(p) {
+    d3.selectAll("#thumbnail-main").style("visibility","hidden");
     if (!p.parent) return;
     zoom(p.parent, p);
   }
@@ -207,7 +214,6 @@ function key(d) {
 
 function fill(d) {
   var p = d;
-  while (p.depth > 1) p = p.parent;
   var c = d3.lab(hue(p.name));
   c.l = luminance(d.sum);
   return c;
@@ -236,7 +242,7 @@ d3.select(self.frameElement).style("height", margin.top + margin.bottom + "px");
 </script>
 
     <!--start-->
-    <div style="padding:20px 0 100px; ">
+    <div id="thumbnail-main" style="visibility: hidden; padding:20px 0 100px; ">
         <div id="thumbnail-slider">
             <div class="inner">
                 <ul>
@@ -244,9 +250,9 @@ d3.select(self.frameElement).style("height", margin.top + margin.bottom + "px");
                         <a href="/">
                             <div class="thumb" style="background-image:url(img/1.jpg)">
                                 <h3>Park Lane Mews Hotel </h3>
-                                Popular now! 9 people are looking at this moment
-Booked 18 times today
-Latest booking: 1 hour ago
+                                Popular now! 9 people are looking at this moment.
+                                Booked 18 times today.
+                                Latest booking: 1 hour ago
                             </div>
                         </a>
                     </li>
@@ -306,7 +312,8 @@ Latest booking: 1 hour ago
                     </li>
                     <li>
                         <a class="thumb" href="img/11.jpg">
-                            <h3>The Cumberland - A Guoman Hotel </h3>
+                            <h3>The Cumberland - A Guoman Hotel </h3> 
+                            <p> Rs. 7800 </p>
                             Eget semper lacus mollis vel. Mauris ut placerat dui, sit amet tristique tellus.
                         </a>
                     </li>
