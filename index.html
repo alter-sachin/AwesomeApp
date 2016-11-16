@@ -129,13 +129,8 @@ d3.json("hotel.json", function(error, root) {
 
     path = path.data(partition.nodes(root).slice(1), function(d) { return d.key; });
 
-    path = path.data(partition.nodes(root).slice(1), function (d) {
-            return d.key;
-        });
-
-        text = text.data(partition.nodes(root).slice(1), function (d) {
-            return d.key;
-        });
+    
+    text = text.data(partition.nodes(root).slice(1), function (d) { return d.key;});
 
     // When zooming out, arcs enter from the inside and exit to the outside.
     // Exiting outside arcs transition to the new layout.
