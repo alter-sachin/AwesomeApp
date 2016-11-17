@@ -2,10 +2,6 @@
 <head>
     <title>Book a hotel!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="5/tooltip.css" rel="stylesheet" />
-    <script src="5/tooltip.js"></script>
-    <link href="5/thumbnail-slider.css" rel="stylesheet" type="text/css" />
-    <script src="5/thumbnail-slider.js" type="text/javascript"></script>
     <style>
         body {font: normal 0.9em Arial;color: #222;margin:0;}
         header {display: block;font-size: 1.2em;margin-bottom:100px;}        
@@ -20,17 +16,35 @@
             text-align: center;
             height: 20px;
         }
-        header span {background:white;}
+        header span {
+          background:white;  
+        }
         a {
           height: 50px;
           width: 50px;
-          color: #1155CC;}
+          color: #1155CC;
+        }
     </style>
 </head>
 
 <meta charset="utf-8">
 <style>
+    	ul{
+			list-style: none outside none;
+		    padding-left: 0;
+            margin: 0;
+		}
+        .demo .item{
+            margin-bottom: 60px;
+        }
 
+        .content-slider h3 {
+		    margin: 0;
+		    padding: 70px 0;
+		}
+        .demo{
+			width: 800px;
+		}
 circle,
 path {
   cursor: pointer;
@@ -42,12 +56,26 @@ circle {
 }
 
 </style>
-<body>
-
 <script src="//d3js.org/d3.v3.min.js"></script>
-<script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="lightslider.js"></script>
+<link href="lightslider.css" rel="stylesheet"></link>
+<body>
+<!-- <form>
+    <label for="location">Location</label>
+    <input type="name" name="location"/>
 
-var margin = {top: 300, right: 480, bottom: 300, left: 660},
+    <label for="startDate">StartDate</label>
+    <input type="date" name="startDate"/>
+
+    <label for="endDate">EndDate</label>
+    <input type="date" name="endDate"/>
+    
+    <button type="submit" value="Update" action="JavaScript:handleClick()"/>
+</form> -->
+<script>
+$(document).ready(function() {
+var margin = {top: 320, right: 400, bottom: 320, left: 300},
     radius = Math.min(margin.top, margin.right, margin.bottom, margin.left) - 10;
 
 var hue = d3.scale.category10();
@@ -57,7 +85,7 @@ var luminance = d3.scale.sqrt()
     .clamp(true)
     .range([90, 20]);
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#container").append("svg")
     .attr("width", margin.left + margin.right)
     .attr("height", margin.top + margin.bottom)
     .append("g")
@@ -75,7 +103,126 @@ var arc = d3.svg.arc()
     .innerRadius(function(d) { return radius / 3 * d.depth; })
     .outerRadius(function(d) { return radius / 3 * (d.depth + 1) - 1; });
 
-d3.json("hotel.json", function(error, root) {
+d3.xhr("http://terminal2.expedia.com/x/mhotels/search?city=SEATTLE&checkInDate=2016-12-01&checkOutDate=2016-12-03&room1=2&apikey=jvwlvNfrm9V7NDzMVPOliAjLpPSc8oDa", function(error, xhrObject) {
+    
+    var root = {
+        name: "hotel",
+        children: [
+            {
+                name : "*",
+                children : [
+
+                ]
+            },
+            {
+                name: "**",
+                children : [
+
+                ]
+            },
+            {
+                name: "***",
+                children : [
+
+                ]
+            },
+            {
+                name: "****",
+                children : [
+
+                ]
+            }
+        ]
+    };
+    
+    console.log("In function");
+    console.log(xhrObject.response);
+
+    var responseObject = JSON.parse(xhrObject.response);
+
+    var hotelList = responseObject.hotelList;
+
+    var min = 10000000;
+    var max = -1;
+    for(var i = 0 ; i < hotelList.length ; i++ ){
+        console.log(hotelList[i].name);
+        console.log(hotelList[i].hotelStarRating);
+        console.log(hotelList[i].lowRateInfo.maxNightlyRate);
+
+        var a = parseFloat(hotelList[i].lowRateInfo.maxNightlyRate);
+        if(a < min ) {
+            min = a;
+        }
+        if(a > max) {
+            max = a;
+        }
+        console.log(hotelList[i].locationDescription);
+    }
+
+    var ranges = [min,min + (max-min)/4,min + 2*(max-min)/4,min + 3*(max-min)/4,max];
+
+    for(var i = 0; i< root.children.length;i++){
+        var elem = root.children[i];
+        for(var j = 0;j<4; j++){
+            var child = {name: Math.round(ranges[j])+"-"+Math.round(ranges[j+1]) , children: [] }
+            elem.children.push(child);
+        }
+    }
+
+    for(var i=0;i<hotelList.length;i++){
+        
+        var index = 0;
+        if(hotelList[i].hotelStarRating < 2) {
+            index = 0;
+        }else if(hotelList[i].hotelStarRating > 2 &&  hotelList[i].hotelStarRating<3){
+            index = 1;
+        }else if(hotelList[i].hotelStarRating > 3 && hotelList[i].hotelStarRating < 4){
+            index = 2;
+        }else if(hotelList[i].hotelStarRating > 4){
+            index = 3;
+        }
+
+        //root1.children[index].children
+
+        var i_index = 0;
+        if(hotelList[i].lowRateInfo.maxNightlyRate < ranges[1] ) {
+            i_index = 0;
+        }else if(hotelList[i].lowRateInfo.maxNightlyRate > ranges[1] && hotelList[i].lowRateInfo.maxNightlyRate < ranges[2]){
+            i_index = 1;
+        }else if(hotelList[i].lowRateInfo.maxNightlyRate > ranges[2] && hotelList[i].lowRateInfo.maxNightlyRate < ranges[3]){
+            i_index = 2;
+        }else {
+            i_index = 3;
+        }
+
+        if (root.children[index].children[i_index].children.length === 0 ){
+            var elem = {name: hotelList[i].locationDescription,size: 1,hotels: [
+                {
+                    name : hotelList[i].name,
+                    description : hotelList[i].shortDescription,
+                    img_url : hotelList[i].largeThumbnailUrl
+                }
+            ]};
+            root.children[index].children[i_index].children.push(elem);
+            
+        }else{
+            for(var j=0;j<root.children[index].children[i_index].children.length;j++){
+                if(root.children[index].children[i_index].children[j].name === hotelList[i].locationDescription ){
+                    root.children[index].children[i_index].children[j].size = root.children[index].children[i_index].children[j].size+1;
+                    var elem =  {
+                            name : hotelList[i].name,
+                            description : hotelList[i].shortDescription,
+                            img_url : hotelList[i].largeThumbnailUrl
+                        };
+                    root.children[index].children[i_index].children[j].hotels.push(elem);
+                    break;
+                }
+            }
+        }
+    }
+
+
+
   if (error) throw error;
 
   // Compute the initial layout on the entire tree to sum sizes.
@@ -118,19 +265,45 @@ d3.json("hotel.json", function(error, root) {
       .attr("x", function(d) {return radius / 3 * d.depth; })
       .attr("dx", "6") // margin
       .attr("dy", ".35em") // vertical-align
-      .html(function(d) { return d.name; });
+      .html(function(d) {         if(d.sum === 0){
+          return "";
+        } 
+        return d.name + " [" +  d.sum + "]";  });
 
   function zoomIn(p) {
     if (p.depth > 1) p = p.parent;
     if (!p.children) {
-      d3.selectAll("#thumbnail-main").style("visibility","");
+      var listBro = document.getElementById("lightSlider");
+      listBro.innerHTML="";
+      for(var i=0;i<p.hotels.length;i++){
+          var li = document.createElement("li");
+          li.setAttribute("data-thumb","https://images.trvl-media.com"+p.hotels[i].img_url);
+          //var aa  = document.createElement("a");
+          var h3 = document.createElement("h3");
+          h3.appendChild(document.createTextNode(p.hotels[i].name));
+
+          var img_ = document.createElement("img");
+          img_.setAttribute("src","https://images.trvl-media.com"+p.hotels[i].img_url);
+          //var pp = document.createElement("p");
+          //pp.appendChild(document.createTextNode(p.hotels[i].description));
+          //aa.setAttribute("class", "thumb"); // added line
+          //aa.setAttribute("href","https://images.trvl-media.com"+p.hotels[i].img_url);
+          //aa.appendChild(h3);
+          //aa.appendChild(pp);
+          //li.appendChild(aa);
+          li.appendChild(img_);
+          li.appendChild(h3);
+          listBro.appendChild(li);
+      }
+      $("#lightSlider").lightSlider(); 
+      d3.selectAll(".demo").style("display","block");
       return;
     }
     zoom(p, p);
   }
 
   function zoomOut(p) {
-    d3.selectAll("#thumbnail-main").style("visibility","hidden");
+    d3.selectAll(".demo").style("display","none");
     if (!p.parent) return;
     zoom(p.parent, p);
   }
@@ -191,7 +364,12 @@ d3.json("hotel.json", function(error, root) {
       .attr("x", function(d) {return radius / 3 * d.depth; })
       .attr("dx", "6") // margin
       .attr("dy", ".35em") // vertical-align
-      .text(function(d) { return d.name; });
+      .text(function(d) {
+        if(d.sum === 0){
+          return "";
+        } 
+        return d.name + " [" +  d.sum + "]"; 
+      });
 
     text.exit().transition()
       .style("fill-opacity", function(d) { return d.depth === 1 + (root === p) ? 1 : 0; })
@@ -237,107 +415,12 @@ function computeTextRotation(d) {
 }
 
 d3.select(self.frameElement).style("height", margin.top + margin.bottom + "px");
-
+});
 
 </script>
-
-    <!--start-->
-    <div id="thumbnail-main" style="visibility: hidden; padding:20px 0 100px; ">
-        <div id="thumbnail-slider">
-            <div class="inner">
-                <ul>
-                    <li>
-                        <a href="/">
-                            <div class="thumb" style="background-image:url(img/1.jpg)">
-                                <h3>Park Lane Mews Hotel </h3>
-                                Popular now! 9 people are looking at this moment.
-                                Booked 18 times today.
-                                Latest booking: 1 hour ago
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="thumb" href="img/2.jpg">
-                            <h3>Grand Royale London Hyde Park </h3>
-                            Nulla porttitor fringilla dui vel pulvinar. Nam sodales, diam eu faucibus convallis.
-                        </a>
-                    </li>
-                    <li>
-                        <a class="thumb" href="img/3.jpg">
-                            <h3>Park Lane Apartments/Shaw House</h3>
-                            Sed tincidunt mi ut ligula rutrum dictum. Nam varius in nunc eget viverra.
-                        </a>
-                    </li>
-                    <li>
-                        <a class="thumb" href="img/4.jpg">
-                            <h3>Park Grand Paddington Court </h3>
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
-                        </a>
-                    </li>
-                    <li>
-                        <a class="thumb" href="img/5.jpg">
-                            <h3>Blakemore Hyde Park </h3>
-                            Quisque luctus, dui nec condimentum interdum et sodales nulla ante at nunc.
-                        </a>
-                    </li>
-                    <li>
-                        <a class="thumb" href="img/6.jpg">
-                            <h3>Millennium Hotel London Mayfair </h3>
-                            Maecenas volutpat accumsan nibh ut gravida. Praesent id laoreet libero. Felis at volutpat egestas.
-                        </a>
-                    </li>
-                    <li>
-                        <a class="thumb" href="img/7.jpg">
-                            <h3>Holiday Inn London Mayfair </h3>
-                            Vivamus dictum pulvinar sem in ultricies. Vestibulum sit amet posuere dui.
-                        </a>
-                    </li>
-                    <li>
-                        <a class="thumb" href="img/8.jpg">
-                            <h3>Washington Mayfair Hotel </h3>
-                            Nunc tempor massa in purus lobortis dapibus ac eget nulla.
-                        </a>
-                    </li>
-                    <li>
-                        <a class="thumb" href="img/9.jpg">
-                            <h3>Norfolk Towers Paddington </h3>
-                            Fusce quis eros vitae mauris porta vulputate non et orci. A convallis augue aliquet at.
-                        </a>
-                    </li>
-                    <li>
-                        <a class="thumb" href="img/10.jpg">
-                            <h3>Hilton London Green Park </h3>
-                            In blandit quam. Mauris iaculis libero consequat elit molestie, sed lobortis lorem posuere.
-                        </a>
-                    </li>
-                    <li>
-                        <a class="thumb" href="img/11.jpg">
-                            <h3>The Cumberland - A Guoman Hotel </h3> 
-                            <p> Rs. 7800 </p>
-                            Eget semper lacus mollis vel. Mauris ut placerat dui, sit amet tristique tellus.
-                        </a>
-                    </li>
-                    <li>
-                        <a class="thumb" href="img/12.jpg">
-                            <h3>Thistle Kensington Gardens</h3>
-                            At gravida nunc condimentum id. Morbi gravida accumsan mauris at scelerisque
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+    <div id="container" style="height:640px;width:700px"></div>
+    <div class="demo">
+        <ul id="lightSlider" class="content-slider" >
+        </ul>
     </div>
-    <script>
-        //Note: this script should be placed at the bottom of the page, or after the slider markup. It cannot be placed in the head section of the page.
-        var slides = document.getElementById("thumbnail-slider").getElementsByTagName("li");
-        for (var i = 0; i < slides.length; i++) {
-            slides[i].onmouseover = function (e) {
-                var li = this;
-                if (li.thumb) {
-                    var content = "<div class='tip-wrap' style='background-image:url(" + li.thumbSrc + ");'><div class='tip-text'>" + li.thumb.innerHTML + "</div></div>";
-                    tooltip.pop(li, content);
-                }
-            };
-        }
-    </script>
     <!--end-->
