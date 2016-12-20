@@ -40,10 +40,10 @@
 
         .content-slider h3 {
 		    margin: 0;
-		    padding: 70px 0;
+		    padding: 30px 0;
 		}
         .demo{
-			width: 800px;
+			width: 400px;
 		}
 circle,
 path {
@@ -75,7 +75,7 @@ circle {
 </form> -->
 <script>
 $(document).ready(function() {
-var margin = {top: 320, right: 400, bottom: 320, left: 300},
+var margin = {top: 220, right: 400, bottom: 220, left: 300},
     radius = Math.min(margin.top, margin.right, margin.bottom, margin.left) - 10;
 
 var hue = d3.scale.category10();
@@ -284,6 +284,7 @@ d3.xhr("http://terminal2.expedia.com/x/mhotels/search?city=SEATTLE&checkInDate=2
 
           var img_ = document.createElement("img");
           img_.setAttribute("src","https://images.trvl-media.com"+p.hotels[i].img_url);
+          img_.setAttribute("style","height:70px;width:70px;");
           //var pp = document.createElement("p");
           //pp.appendChild(document.createTextNode(p.hotels[i].description));
           //aa.setAttribute("class", "thumb"); // added line
@@ -418,9 +419,11 @@ d3.select(self.frameElement).style("height", margin.top + margin.bottom + "px");
 });
 
 </script>
-    <div id="container" style="height:640px;width:700px"></div>
-    <div class="demo">
+    <div id="container" style="height:440px;width:700px"></div>
+    <div class="demo" style="padding-left: 100px;">
         <ul id="lightSlider" class="content-slider" >
         </ul>
     </div>
+</body>
+</html>
     <!--end-->
